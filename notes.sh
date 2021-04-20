@@ -19,4 +19,6 @@ while getopts ":a:c" opt; do   #options are -a and -c. -a appends note, -c clear
       exit 1
       ;;
   esac
+  killall conky && conky --daemonize
+  
 done
