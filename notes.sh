@@ -1,16 +1,17 @@
 #!/bin/bash
-FILE=~/.conkynotes.txt
-while getopts ":m:c" opt; do
+FILE=~/.conkynotes
+while getopts ":a:c" opt; do   #options are -a and -c. -a appends note, -c clears all the notes
   case $opt in
   	c)
 	  > "${FILE}"
   	  ;;
-    m)
+    a)
       m=${OPTARG}
-      echo  "[*] ${m}" >> .conkynotes.txt
+      echo  "[*] ${m}" >> $FILE
       ;;
     *)
       echo "Invalid option: -$OPTARG" >&2
+      echo "Options are -a for append, -c for clear"
       exit 1
       ;;
     :)
@@ -19,6 +20,3 @@ while getopts ":m:c" opt; do
       ;;
   esac
 done
-
-
-
